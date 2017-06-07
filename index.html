@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>closure</title>
+    <script type="text/javascript" src="js/jquery-1.7.min.js"></script>
+  </head>
+  <body>
+    <div id="divTest">
+      <p>0</p>
+      <p>1</p>
+      <p>2</p>
+      <p>3</p>
+    </div>
+    <div id="divTest2">
+      <p>1</p>
+      <p>2</p>
+      <p>3</p>
+      <p>4</p>
+    </div>
+    <script type="text/javascript">
+      $(function() {
+        var p = $("#divTest p");
+          for (var i = 0; i < p.length; i++) {
+              p[i].onclick = function() {
+                  alert(i);
+              }
+          }
+          var p2 = $("#divTest2 p");
+          for (var i = 0; i < p2.length; i++) {
+            (function(num){
+              p2[i].onclick = function () {
+                alert(num);
+              }
+            })(i);
+          }
+      })
+    </script>
+  </body>
+</html>
